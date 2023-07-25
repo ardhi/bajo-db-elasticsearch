@@ -1,5 +1,5 @@
 {
-  "name": "bajo-db-couchdb",
+  "name": "bajo-db-elasticsearch",
   "version": "0.1.0",
   "description": "Bajo DB CouchDB driver for Bajo Framework",
   "main": "index.js",
@@ -9,10 +9,10 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ardhi/bajo-db-couchdb.git"
+    "url": "git+https://github.com/ardhi/bajo-db-elasticsearch.git"
   },
   "keywords": [
-    "couchdb",
+    "elasticsearch",
     "db",
     "driver",
     "bajo",
@@ -22,7 +22,11 @@
   "author": "Ardhi Lukianto <ardhi@lukianto.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ardhi/bajo-db-couchdb/issues"
+    "url": "https://github.com/ardhi/bajo-db-elasticsearch/issues"
   },
-  "homepage": "https://github.com/ardhi/bajo-db-couchdb#readme"
+  "homepage": "https://github.com/ardhi/bajo-db-elasticsearch#readme",
+  "dependencies": {
+    "@elastic/elasticsearch": "^8.8.1",
+    "ts-mqes": "^1.0.3"
+  }
 }
