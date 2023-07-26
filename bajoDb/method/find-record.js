@@ -1,9 +1,9 @@
 import { convert } from 'ts-mqes'
 
 async function findRecord ({ schema, filter = {}, options = {} } = {}) {
+  const { importPkg } = this.bajo.helper
   const { getInfo } = this.bajoDb.helper
   const { instance } = await getInfo(schema)
-  const { importPkg } = this.bajo.helper
   const { map, forOwn, isEmpty } = await importPkg('lodash-es')
   const { prepPagination } = this.bajoDb.helper
   const { limit, skip, query, sort } = await prepPagination(filter, schema)

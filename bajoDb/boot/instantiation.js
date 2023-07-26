@@ -1,7 +1,8 @@
 import { Client } from '@elastic/elasticsearch'
 import createIndex from '../../lib/create-index.js'
+import collExists from '../method/coll-exists.js'
 
-async function instancing ({ connection, schemas, noRebuild }) {
+async function instantiation ({ connection, schemas, noRebuild }) {
   const { importPkg, log } = this.bajo.helper
   const { pick, omit } = await importPkg('lodash-es')
   this.bajoDbElasticsearch.instances = this.bajoDbElasticsearch.instances || []
@@ -11,7 +12,7 @@ async function instancing ({ connection, schemas, noRebuild }) {
   if (noRebuild) return
   for (const schema of schemas) {
     try {
-      const exists = await instance.client.indices.exists({ index: schema.collName })
+      const exists = await collExists.call(this, schema)
       if (exists) continue
       await createIndex.call(this, { schema, instance })
       log.trace('Model \'%s@%s\' successfully built on the fly', schema.name, connection.name)
@@ -21,4 +22,4 @@ async function instancing ({ connection, schemas, noRebuild }) {
   }
 }
 
-export default instancing
+export default instantiation
