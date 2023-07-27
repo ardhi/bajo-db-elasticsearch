@@ -8,7 +8,8 @@ async function createRecord ({ schema, body, options = {} } = {}) {
     id: body.id,
     document: body
   })
-  return await getRecord.call(this, { schema, id: resp._id, options })
+  const result = await getRecord.call(this, { schema, id: resp._id })
+  return { data: result }
 }
 
 export default createRecord
