@@ -4,7 +4,7 @@ async function getRecord ({ schema, id, options = {} } = {}) {
   const { importPkg } = this.bajo.helper
   const { get } = await importPkg('lodash-es')
   const { error } = this.bajo.helper
-  const { thrownNotFound = true, dataOnly = true } = options
+  const { thrownNotFound = true } = options
   let result
   try {
     result = await instance.client.get({
@@ -15,7 +15,7 @@ async function getRecord ({ schema, id, options = {} } = {}) {
     if (!get(err, 'meta.body.found') && thrownNotFound) throw error('Record \'%s@%s\' not found!', id, schema.name)
     throw err
   }
-  return dataOnly ? result._source : { data: result._source }
+  return { data: result._source }
 }
 
 export default getRecord
