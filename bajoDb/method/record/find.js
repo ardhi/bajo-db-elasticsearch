@@ -1,6 +1,6 @@
 import { convert } from 'ts-mqes'
 
-async function findRecord ({ schema, filter = {}, options = {} } = {}) {
+async function find ({ schema, filter = {}, options = {} } = {}) {
   const { importPkg } = this.bajo.helper
   const { getInfo } = this.bajoDb.helper
   const { instance } = await getInfo(schema)
@@ -25,4 +25,4 @@ async function findRecord ({ schema, filter = {}, options = {} } = {}) {
   return { data: results, page, limit, count, pages: Math.ceil(count / limit) }
 }
 
-export default findRecord
+export default find

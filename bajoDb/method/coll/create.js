@@ -1,7 +1,6 @@
-async function createIndex ({ schema, instance }) {
-  // const { importPkg } = this.bajo.helper
-  // const { has, isPlainObject, isString, omit, merge } = await importPkg('lodash-es')
-  const client = instance.client
+async function create (schema) {
+  const { getInfo } = this.bajoDb.helper
+  const { instance } = await getInfo(schema)
   const properties = {}
   for (const p of schema.properties) {
     if (p.name === 'id') continue
@@ -34,10 +33,10 @@ async function createIndex ({ schema, instance }) {
     if (format) properties[p.name].format = format
   }
   const mappings = { properties }
-  await client.indices.create({
+  await instance.client.indices.create({
     index: schema.collName,
     mappings
   })
 }
 
-export default createIndex
+export default create

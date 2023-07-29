@@ -1,4 +1,4 @@
-async function getRecord ({ schema, id, options = {} } = {}) {
+async function get ({ schema, id, options = {} } = {}) {
   const { getInfo } = this.bajoDb.helper
   const { instance } = await getInfo(schema)
   const { importPkg } = this.bajo.helper
@@ -18,4 +18,4 @@ async function getRecord ({ schema, id, options = {} } = {}) {
   return { data: result._source }
 }
 
-export default getRecord
+export default get

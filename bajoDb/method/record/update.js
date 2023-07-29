@@ -1,6 +1,6 @@
-import getRecord from './get-record.js'
+import getRecord from './get.js'
 
-async function updateRecord ({ schema, id, body, options } = {}) {
+async function update ({ schema, id, body, options } = {}) {
   const { getInfo } = this.bajoDb.helper
   const { instance } = await getInfo(schema)
   const old = await getRecord.call(this, { schema, id })
@@ -13,4 +13,4 @@ async function updateRecord ({ schema, id, body, options } = {}) {
   return { old: old.data, new: result.data }
 }
 
-export default updateRecord
+export default update
