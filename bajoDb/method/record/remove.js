@@ -5,7 +5,7 @@ async function remove ({ schema, id, options = {} } = {}) {
   const { instance } = await getInfo(schema)
   const rec = await getRecord.call(this, { schema, id })
   await instance.client.delete({ id, index: schema.collName })
-  return { old: rec.data }
+  return { oldData: rec.data }
 }
 
 export default remove

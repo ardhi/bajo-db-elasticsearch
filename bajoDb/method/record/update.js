@@ -10,7 +10,7 @@ async function update ({ schema, id, body, options } = {}) {
     doc: body
   })
   const result = await getRecord.call(this, { schema, id })
-  return { old: old.data, new: result.data }
+  return { oldData: old.data, data: result.data }
 }
 
 export default update
