@@ -34,7 +34,7 @@ async function create (schema) {
   }
   const mappings = { properties }
   await instance.client.indices.create({
-    index: schema.collName,
+    index: schema.repoName,
     mappings
   })
 }
