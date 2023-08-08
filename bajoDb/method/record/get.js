@@ -12,7 +12,7 @@ async function get ({ schema, id, options = {} } = {}) {
       id
     })
   } catch (err) {
-    if (!get(err, 'meta.body.found') && thrownNotFound) throw error('Record \'%s@%s\' not found!', id, schema.name)
+    if (!get(err, 'meta.body.found') && thrownNotFound) throw error('Record \'%s@%s\' not found!', id, schema.name, { statusCode: 404 })
     throw err
   }
   return { data: result._source }
