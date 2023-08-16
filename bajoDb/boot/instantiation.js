@@ -5,7 +5,7 @@ import repoExists from '../method/repo/exists.js'
 async function instantiation ({ connection, schemas, noRebuild }) {
   const { importPkg, log } = this.bajo.helper
   const { pick, omit } = await importPkg('lodash-es')
-  this.bajoDbElasticsearch.instances = this.bajoDbElasticsearch.instances || []
+  this.bajoDbElasticsearch.instances = this.bajoDbElasticsearch.instances ?? []
   const instance = pick(connection, ['name', 'type'])
   instance.client = new Client(omit(connection, ['name', 'type']))
   this.bajoDbElasticsearch.instances.push(instance)
