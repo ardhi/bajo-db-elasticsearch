@@ -7,7 +7,7 @@ async function count ({ schema, filter = {}, options = {} } = {}) {
   const { get } = await importPkg('lodash-es')
   const { prepPagination } = this.bajoDb.helper
   const { query } = await prepPagination(filter, schema)
-  const criteria = query ? convert(query.toJSON()) : undefined
+  const criteria = query ? convert(query) : undefined
   const resp = await instance.client.search({
     query: criteria,
     index: schema.repoName,

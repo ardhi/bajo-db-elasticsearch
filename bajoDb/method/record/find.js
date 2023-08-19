@@ -7,7 +7,7 @@ async function find ({ schema, filter = {}, options = {} } = {}) {
   const { map, forOwn, isEmpty, get } = await importPkg('lodash-es')
   const { prepPagination } = this.bajoDb.helper
   const { limit, skip, query, sort, page } = await prepPagination(filter, schema)
-  const criteria = query ? convert(query.toJSON()) : undefined
+  const criteria = query ? convert(query) : undefined
   const sorts = []
   forOwn(sort, (v, k) => {
     sorts.push(`${k}:${v < 0 ? 'desc' : 'asc'}`)
