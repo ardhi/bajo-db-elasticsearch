@@ -1,5 +1,5 @@
-import create from '../repo/create.js'
-import drop from '../repo/drop.js'
+import create from '../coll/create.js'
+import drop from '../coll/drop.js'
 
 async function clear ({ schema, options = {} } = {}) {
   const { recreate = true } = options
@@ -10,7 +10,7 @@ async function clear ({ schema, options = {} } = {}) {
     await create.call(this, schema)
   } else {
     await instance.client.deleteByQuery({
-      index: schema.repoName,
+      index: schema.collName,
       query: { match_all: {} }
     })
   }

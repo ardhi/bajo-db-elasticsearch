@@ -8,7 +8,7 @@ async function get ({ schema, id, options = {} } = {}) {
   let result
   try {
     result = await instance.client.get({
-      index: schema.repoName,
+      index: schema.collName,
       id
     })
   } catch (err) {

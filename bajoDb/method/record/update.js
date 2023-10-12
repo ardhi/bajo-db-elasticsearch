@@ -6,7 +6,7 @@ async function update ({ schema, id, body, options } = {}) {
   const old = await getRecord.call(this, { schema, id })
   await instance.client.update({
     id,
-    index: schema.repoName,
+    index: schema.collName,
     doc: body
   })
   const result = await getRecord.call(this, { schema, id })

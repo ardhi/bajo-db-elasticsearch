@@ -1,6 +1,6 @@
 import { Client } from '@elastic/elasticsearch'
-import createIndex from '../method/repo/create.js'
-import repoExists from '../method/repo/exists.js'
+import createIndex from '../method/coll/create.js'
+import collExists from '../method/coll/exists.js'
 
 async function instantiation ({ connection, schemas, noRebuild }) {
   const { importPkg, log } = this.bajo.helper
@@ -12,7 +12,7 @@ async function instantiation ({ connection, schemas, noRebuild }) {
   if (noRebuild) return
   for (const schema of schemas) {
     try {
-      const exists = await repoExists.call(this, schema)
+      const exists = await collExists.call(this, schema)
       if (exists) continue
       await createIndex.call(this, schema)
       log.trace('Model \'%s@%s\' successfully built on the fly', schema.name, connection.name)

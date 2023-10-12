@@ -14,7 +14,7 @@ async function find ({ schema, filter = {}, options = {} } = {}) {
   })
   const resp = await instance.client.search({
     query: criteria,
-    index: schema.repoName,
+    index: schema.collName,
     from: skip,
     size: limit,
     track_total_hits: !options.dataOnly,

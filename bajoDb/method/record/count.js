@@ -10,7 +10,7 @@ async function count ({ schema, filter = {}, options = {} } = {}) {
   const criteria = query ? convert(query) : undefined
   const resp = await instance.client.search({
     query: criteria,
-    index: schema.repoName,
+    index: schema.collName,
     from: 0,
     size: 1,
     track_total_hits: true
