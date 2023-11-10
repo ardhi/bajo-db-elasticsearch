@@ -1,4 +1,4 @@
-async function sanitizer (conn) {
+async function connSanitizer (conn) {
   const { importPkg, fatal } = this.bajo.helper
   const { cloneDeep, has } = await importPkg('lodash-es')
   if (has(conn, 'cloud')) {
@@ -14,4 +14,4 @@ async function sanitizer (conn) {
   return result
 }
 
-export default sanitizer
+export default connSanitizer
