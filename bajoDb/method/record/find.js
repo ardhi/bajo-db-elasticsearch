@@ -6,8 +6,8 @@ async function find ({ schema, filter = {}, options = {} } = {}) {
   const { instance } = await getInfo(schema)
   const { map, forOwn, isEmpty, get } = await importPkg('lodash-es')
   const { prepPagination } = this.bajoDb.helper
-  const { limit, skip, query, sort, page, noCount } = await prepPagination(filter, schema)
-  const { dataOnly } = options
+  const { limit, skip, query, sort, page } = await prepPagination(filter, schema)
+  const { dataOnly, noCount } = options
   const criteria = query ? convert(query) : undefined
   const sorts = []
   forOwn(sort, (v, k) => {
