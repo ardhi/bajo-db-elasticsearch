@@ -1,10 +1,9 @@
 import { convert } from 'ts-mqes'
 
 async function find ({ schema, filter = {}, options = {} } = {}) {
-  const { importPkg } = this.bajo.helper
   const { getInfo } = this.bajoDb.helper
-  const { instance } = await getInfo(schema)
-  const { map, forOwn, isEmpty, get, omit } = await importPkg('lodash-es')
+  const { instance } = getInfo(schema)
+  const { map, forOwn, isEmpty, get, omit } = this.bajo.helper._
   const { prepPagination } = this.bajoDb.helper
   const { limit, skip, query, sort, page } = await prepPagination(filter, schema)
   const criteria = query ? convert(query) : undefined

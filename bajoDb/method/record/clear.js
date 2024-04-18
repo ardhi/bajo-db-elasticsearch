@@ -4,7 +4,7 @@ import drop from '../coll/drop.js'
 async function clear ({ schema, options = {} } = {}) {
   const { recreate = true } = options
   const { getInfo } = this.bajoDb.helper
-  const { instance } = await getInfo(schema)
+  const { instance } = getInfo(schema)
   if (recreate) {
     await drop.call(this, schema)
     await create.call(this, schema)

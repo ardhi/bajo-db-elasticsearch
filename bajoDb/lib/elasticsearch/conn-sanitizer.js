@@ -1,6 +1,6 @@
 async function connSanitizer (conn) {
-  const { importPkg, fatal } = this.bajo.helper
-  const { cloneDeep, has } = await importPkg('lodash-es')
+  const { fatal } = this.bajo.helper
+  const { cloneDeep, has } = this.bajo.helper._
   if (has(conn, 'cloud')) {
     if (!conn.cloud.id) fatal('\'%s@%s\' key is required', 'cloud.id', conn.name, { payload: conn })
   } else if (!has(conn, 'node')) fatal('\'%s@%s\' key is required', 'node', conn.name, { payload: conn })

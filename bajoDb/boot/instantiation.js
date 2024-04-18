@@ -3,8 +3,8 @@ import createIndex from '../method/coll/create.js'
 import collExists from '../method/coll/exists.js'
 
 async function instantiation ({ connection, schemas, noRebuild }) {
-  const { importPkg, log } = this.bajo.helper
-  const { pick, omit } = await importPkg('lodash-es')
+  const { log } = this.bajo.helper
+  const { pick, omit } = this.bajo.helper._
   this.bajoDbElasticsearch.instances = this.bajoDbElasticsearch.instances ?? []
   const instance = pick(connection, ['name', 'type'])
   instance.client = new Client(omit(connection, ['name', 'type']))

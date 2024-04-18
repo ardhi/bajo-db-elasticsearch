@@ -1,10 +1,9 @@
 import { convert } from 'ts-mqes'
 
 async function count ({ schema, filter = {}, options = {} } = {}) {
-  const { importPkg } = this.bajo.helper
   const { getInfo } = this.bajoDb.helper
-  const { instance } = await getInfo(schema)
-  const { get } = await importPkg('lodash-es')
+  const { instance } = getInfo(schema)
+  const { get } = this.bajo.helper._
   const { prepPagination } = this.bajoDb.helper
   const { query } = await prepPagination(filter, schema)
   const criteria = query ? convert(query) : undefined

@@ -3,7 +3,7 @@ import getRecord from './get.js'
 async function update ({ schema, id, body, options } = {}) {
   const { getInfo } = this.bajoDb.helper
   const { noResult } = options
-  const { instance } = await getInfo(schema)
+  const { instance } = getInfo(schema)
   const old = noResult ? undefined : await getRecord.call(this, { schema, id })
   await instance.client.update({
     id,

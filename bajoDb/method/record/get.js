@@ -1,8 +1,7 @@
 async function get ({ schema, id, options = {} } = {}) {
   const { getInfo } = this.bajoDb.helper
-  const { instance } = await getInfo(schema)
-  const { importPkg } = this.bajo.helper
-  const { get } = await importPkg('lodash-es')
+  const { instance } = getInfo(schema)
+  const { get } = this.bajo.helper._
   const { error } = this.bajo.helper
   const { thrownNotFound = true } = options
   let result
