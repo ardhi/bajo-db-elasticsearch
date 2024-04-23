@@ -1,4 +1,4 @@
-async function create (schema) {
+async function create ({ schema, options = {} }) {
   const { getInfo } = this.bajoDb.helper
   const { instance } = getInfo(schema)
   const properties = {}

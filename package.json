@@ -1,6 +1,6 @@
 {
   "name": "bajo-db-elasticsearch",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Bajo DB CouchDB driver for Bajo Framework",
   "main": "index.js",
   "scripts": {
