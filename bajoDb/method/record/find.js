@@ -5,8 +5,8 @@ async function find ({ schema, filter = {}, options = {} } = {}) {
   const { instance } = getInfo(schema)
   const { map, forOwn, isEmpty, get, omit } = this.bajo.helper._
   const { prepPagination } = this.bajoDb.helper
-  const { limit, skip, query, sort, page } = await prepPagination(filter, schema)
-  const criteria = query ? convert(query) : undefined
+  const { limit, skip, sort, page } = await prepPagination(filter, schema)
+  const criteria = filter.query ? convert(filter.query) : undefined
   const sorts = []
   forOwn(sort, (v, k) => {
     sorts.push(`${k}:${v < 0 ? 'desc' : 'asc'}`)

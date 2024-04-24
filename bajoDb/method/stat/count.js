@@ -4,9 +4,7 @@ async function count ({ schema, filter = {}, options = {} }) {
   const { getInfo } = this.bajoDb.helper
   const { instance } = getInfo(schema)
   const { get } = this.bajo.helper._
-  const { prepPagination } = this.bajoDb.helper
-  const { query } = await prepPagination(filter, schema)
-  const criteria = query ? convert(query) : undefined
+  const criteria = filter.query ? convert(filter.query) : undefined
   const resp = await instance.client.search({
     query: criteria,
     index: schema.collName,
