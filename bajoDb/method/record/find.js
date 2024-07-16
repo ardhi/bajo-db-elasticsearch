@@ -1,10 +1,10 @@
 import { convert } from 'ts-mqes'
 
-async function find ({ schema, filter = {}, options = {} } = {}) {
-  const { getInfo } = this.bajoDb.helper
+async function recordFind ({ schema, filter = {}, options = {} } = {}) {
+  const { getInfo } = this.app.bajoDb
   const { instance } = getInfo(schema)
-  const { map, forOwn, isEmpty, get, omit } = this.bajo.helper._
-  const { prepPagination } = this.bajoDb.helper
+  const { map, forOwn, isEmpty, get, omit } = this.app.bajo.lib._
+  const { prepPagination } = this.app.bajoDb
   const { limit, skip, sort, page } = await prepPagination(filter, schema)
   const criteria = filter.query ? convert(filter.query) : undefined
   const sorts = []
@@ -27,4 +27,4 @@ async function find ({ schema, filter = {}, options = {} } = {}) {
   return result
 }
 
-export default find
+export default recordFind

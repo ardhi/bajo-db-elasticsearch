@@ -1,9 +1,9 @@
 import create from './create.js'
 import drop from './drop.js'
 
-async function clear ({ schema, options = {} } = {}) {
+async function collClear ({ schema, options = {} } = {}) {
   const { recreate = true } = options
-  const { getInfo } = this.bajoDb.helper
+  const { getInfo } = this.app.bajoDb
   const { instance } = getInfo(schema)
   if (recreate) {
     await drop.call(this, schema)
@@ -17,4 +17,4 @@ async function clear ({ schema, options = {} } = {}) {
   return true
 }
 
-export default clear
+export default collClear

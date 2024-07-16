@@ -1,9 +1,9 @@
 import { convert } from 'ts-mqes'
 
-async function count ({ schema, filter = {}, options = {} }) {
-  const { getInfo } = this.bajoDb.helper
+async function statCount ({ schema, filter = {}, options = {} }) {
+  const { getInfo } = this.app.bajoDb
   const { instance } = getInfo(schema)
-  const { get } = this.bajo.helper._
+  const { get } = this.app.bajo.lib._
   const criteria = filter.query ? convert(filter.query) : undefined
   const resp = await instance.client.search({
     query: criteria,
@@ -16,4 +16,4 @@ async function count ({ schema, filter = {}, options = {} }) {
   return { data: count }
 }
 
-export default count
+export default statCount

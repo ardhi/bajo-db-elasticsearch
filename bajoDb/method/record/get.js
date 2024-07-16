@@ -1,8 +1,8 @@
-async function get ({ schema, id, options = {} } = {}) {
-  const { getInfo } = this.bajoDb.helper
+async function recordGet ({ schema, id, options = {} } = {}) {
+  const { getInfo } = this.app.bajoDb
   const { instance } = getInfo(schema)
-  const { get } = this.bajo.helper._
-  const { error } = this.bajo.helper
+  const { get } = this.app.bajo.lib._
+  const { error } = this.app.bajo
   const { thrownNotFound = true } = options
   let result
   try {
@@ -17,4 +17,4 @@ async function get ({ schema, id, options = {} } = {}) {
   return { data: result._source }
 }
 
-export default get
+export default recordGet
