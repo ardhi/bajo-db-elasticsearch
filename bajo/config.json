@@ -1,4 +1,0 @@
-{
-  "alias": "elasticsearch",
-  "dependencies": ["bajo-db"]
-}
